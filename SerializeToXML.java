@@ -19,6 +19,18 @@ public class SerializeToXML {
 	 * @param args
 	 */
 
-
+	private void serialize(Contacts map, String xmlFile ) {
+		try {
+			JAXBContext jxbCntxt = JAXBContext.newInstance(Contacts.class);
+			Marshaller marshaller = jxbCntxt.createMarshaller();
+			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+			// output file to console
+			marshaller.marshal(map, System.out);
+			// save to xml file
+			marshaller.marshal(map, new File(xmlFile));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
+	}
 
 }
