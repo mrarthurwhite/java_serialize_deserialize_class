@@ -18,6 +18,17 @@ public class SerializeToXML {
 	/**
 	 * @param args
 	 */
+    public static void main(String[] args) {
+		Contacts cmap = new Contacts();
+		cmap.getMap().put("mr.arthur.white@gmail.com", "Arthur White");
+		cmap.getMap().put("arthur.uthersonn@gmail.com", "Arthur Uthersonn");
+
+		// serialize the object map
+		SerializeToXML sxml = new SerializeToXML();
+		sxml.serialize(cmap,outputContactsFile);
+		sxml.deSerialize(outputContactsFile);// deserealize the map
+	}
+	
 
 	private void serialize(Contacts map, String xmlFile ) {
 		try {
