@@ -33,4 +33,14 @@ public class SerializeToXML {
 		}		
 	}
 
+	private void deSerialize(String xmlFile ) {
+		try {
+			JAXBContext jxbCntxt = JAXBContext.newInstance(Contacts.class);
+			Unmarshaller unmarshaller = jxbCntxt.createUnmarshaller();
+			Contacts cmap= (Contacts) unmarshaller.unmarshal(new File(xmlFile));
+			System.out.println("Number of contacts :  " + cmap.getMap().size());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
